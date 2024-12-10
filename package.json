@@ -1,5 +1,5 @@
 {
-  "name": "walker",
+  "name": "@shawninder/walker",
   "description": "A simple directory tree walker with Typescript support.",
   "version": "1.0.9",
   "homepage": "https://github.com/shawninder/walker",
@@ -10,8 +10,8 @@
     "filesystem",
     "typescript"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/walker.js",
+  "types": "dist/walker.d.ts",
   "files": [
     "dist/**/*"
   ],
