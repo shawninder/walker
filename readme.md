@@ -1,7 +1,12 @@
-walker [![Build Status](https://secure.travis-ci.org/shawninder/walker.png)](http://travis-ci.org/shawninder/walker)
+@shawninder/walker
 ======
 
 A nodejs directory walker with Typescript support.
+
+```sh
+npm i @shawninder/walker
+```
+
 Broadcasts events for various file types as well as a generic "entry" event for all types and provides the ability to prune directory trees.
 This shows the entire API; everything is optional:
 
