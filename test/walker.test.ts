@@ -1,19 +1,25 @@
 import Walker from '../src/walker'
 import fs from 'fs'
 
-import {describe, expect, test} from '@jest/globals'
+import {beforeAll, describe, expect, test} from '@jest/globals'
 
 const SIMPLE_WALK = __dirname + '/fixture-simple-walk'
 const ERROR_WALK = __dirname + '/fixture-error-walk'
 const BAD_START_WALK = __dirname + '/fixture-error-walk/d'
 const SYMLINK_WALK = __dirname + '/fixture-symlink-walk'
 
-// create/remove an inaccessible empty directory to trigger errors
-try {
-  fs.chmodSync(BAD_START_WALK, 0o600)
-  fs.rmdirSync(BAD_START_WALK)
-} catch (e) {}
-try {fs.mkdirSync(BAD_START_WALK, 0o200)} catch (e) {}
+beforeAll(() => {
+  try {
+    fs.chmodSync(BAD_START_WALK, 0o600)
+    fs.rmdirSync(BAD_START_WALK)
+  } catch (e) {}
+  try {fs.mkdirSync(BAD_START_WALK, 0o200)} catch (e) {}
+})
+
+afterAll(() => {
+  try {fs.rmdirSync(BAD_START_WALK)} catch (e) {}
+})
+
 
 function includes (list: string[], item: string) {
   for (let i = list.length - 1; i > 0; i -= 1) {
