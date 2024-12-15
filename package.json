@@ -1,7 +1,7 @@
 {
   "name": "@shawninder/walker",
   "description": "A simple directory tree walker with Typescript support.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/shawninder/walker",
   "author": "Shawn Inder <shawninder@gmail.com>",
   "keywords": [
