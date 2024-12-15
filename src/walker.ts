@@ -2,8 +2,21 @@ import path from 'path'
 import fs, {type Stats} from 'fs'
 import {EventEmitter} from 'events'
 
+interface WalkerEvents {
+  error: [er: NodeJS.ErrnoException, entry: string, stat: Stats]
+  entry: [entry: string, stat: Stats]
+  dir: [entry: string, stat: Stats]
+  symlink: [entry: string, stat: Stats]
+  blockDevice: [entry: string, stat: Stats]
+  characterDevice: [entry: string, stat: Stats]
+  fifo: [entry: string, stat: Stats]
+  socket: [entry: string, stat: Stats]
+  file: [entry: string, stat: Stats]
+  end: []
+}
+
 type DirectoryFilter = (entry: string, stat: Stats) => boolean
-class Walker extends EventEmitter {
+class Walker extends EventEmitter<WalkerEvents> {
   _pending = 0
   _filterDir: DirectoryFilter = function () {return true}
 
